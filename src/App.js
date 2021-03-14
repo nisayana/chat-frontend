@@ -3,13 +3,14 @@ import {Link, Switch, Route} from 'react-router-dom';
 import Home from './components/Home'
 import Chatroom from './components/Chatroom'
 import './App.css';
+import {connect} from 'react-redux';
 
 // 
 
 function App() {
 
   let [token, setToken] = useState("")
-  let [user, setUser] = useState([])
+  let [currentUser, setUser] = useState([])
 
   useEffect(() => {
     // console.log("hello")
@@ -21,25 +22,22 @@ function App() {
        }
      })
      .then(res=>res.json())
-     .then(this.helpHandleResponse)
-    //  this.fetchChatrooms()
+     .then(resp => {
+       console.log(resp)
+     })
    }
   }, [])
 
-  const helpHandleResponse = (resp)=>{
-    localStorage.token=resp.token
-    setToken(resp.token)
-    setUser(resp)
-    // this.setState({
-    //   currentUser: resp,
-    //   token: resp.token
-    // })
-  }
+  // console.log(currentUser)
 
   return (
     <div>
-      <Route path="/" component={Home}/>
-      <Route path="/chatrooms" component={Chatroom}/>
+      <Switch>
+        <Route path="/" component={Home}>
+          
+        </Route>
+        <Route path="/chatrooms" component={Chatroom}/>
+      </Switch>
     </div>
   );
 }

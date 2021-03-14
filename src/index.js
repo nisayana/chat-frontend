@@ -6,6 +6,7 @@ import store from './store'
 
 import {BrowserRouter} from 'react-router-dom'
 import {Provider} from 'react-redux'
+import {ActionCableProvider} from 'react-actioncable-provider'
 
 ReactDOM.render(
   <Provider store={store}>
