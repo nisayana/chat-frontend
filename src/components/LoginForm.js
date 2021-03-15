@@ -56,20 +56,41 @@
 
 import React from 'react'
 import {connect} from 'react-redux'
+import {useState} from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
+import { useHistory } from 'react-router-dom'
 
 function LoginForm() {
 
 let [username, setUsername] = useState("")
-let [passowrd, setPassword] = useState("")
+let [password, setPassword] = useState("")
 let [errorMessage, setErrorMessage] = useState("")
 
-const handleChange = (evt) => {
-  // this.setState({
-  //     [evt.target.name]: evt.target.value
-  // })
-} 
+let handleSubmit = (evt) => {
+  evt.preventDefault()
+  fetch("http://localhost:3000/login", {
+    method: "POST",
+    headers: {
+      "Content-type": "Application/JSON"
+    },
+    body: JSON.stringify({
+      username,
+      password
+    })
+  })
+    .then(res => res.json())
+    .then(resp => {
+      console.log(resp)
+      if(resp.error){
+        setErrorMessage()
+      } else {
+        setUserInfo(resp)
+        localStorage.token = resp.token
+        // useHistory().push("/chats")
+      }
+    })
+}
 
 
   return(
@@ -78,15 +99,17 @@ const handleChange = (evt) => {
       <Header as='h2' color='white' textAlign='center' background-color='40adce'>
          Login to your account
       </Header>
-      <Form size='large'>
+      <Form size='large' onSubmit={handleSubmit}>
         <Segment stacked>
-          <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' />
+          <Form.Input fluid icon='user' iconPosition='left' placeholder='Username' onChange={e => {setUsername(e.target.value)}} value={username} />
           <Form.Input
             fluid
             icon='lock'
             iconPosition='left'
             placeholder='Password'
             type='password'
+            onChange={e => {setPassword(e.target.value)}}
+            value={password}
           />
 
           <Button color='teal' fluid size='large'>
