@@ -4,15 +4,15 @@ import './index.css';
 import App from './App';
 import store from './store'
 
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter as Router} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import {ActionCableProvider} from 'react-actioncable-provider'
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router>
       <App />
-    </BrowserRouter>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );
