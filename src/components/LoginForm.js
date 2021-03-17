@@ -3,13 +3,14 @@ import {connect} from 'react-redux'
 import {useState} from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
-// import { useHistory } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 function LoginForm(props) {
 // console.log()
 let [username, setUsername] = useState("")
 let [password, setPassword] = useState("")
 let [errorMessage, setErrorMessage] = useState("")
+let [redirectToMain, setRedirectToMain] = useState("")
 
 // let history = useHistory()
 
@@ -33,11 +34,14 @@ let handleSubmit = (evt) => {
       } else {
         setUserInfo(resp)
         localStorage.token = resp.token
-        // history.push("/chats")
+        setRedirectToMain(true)
       }
     })
 }
 
+if(redirectToMain){
+  return <Redirect to="/chats"/>
+}
 
   return(
   <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>

@@ -8,7 +8,7 @@ let userReducer = (state = initialStateOfUserReducer, action) => {
     switch (action.type) {
   
       case "SET_USER_INFO":
-        console.log(action)
+        // console.log(action)
         return {
           ...state,
           chatroom: action.payload.user.chatroom,
