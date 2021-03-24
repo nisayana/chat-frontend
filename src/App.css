@@ -8,20 +8,57 @@
   color: white;
 }
 
-/* .main {
-  display: flex;
-  flex-direction: row;
-}
-
-.main > div {
+/* .main > div {
   background-color: #f1f1f1;
   width: 100%;
   margin: 10px;
   text-align: center;
   line-height: 75px;
   font-size: 30px;
+} */
+
+#chatbox{
+	width:290px;
+	background:rgb(203, 217, 233);
+	border-radius:6px;
+	overflow:hidden;
+	height:484px;
+	position:absolute;
+	top:100px;
+	left:50%;
+	margin-left:-155px;
 }
 
-.home-image{
-  width: 100%
+#chats {
+  position:absolute;
+	top:0;
+	left:0;
+	width:290px;
+	height:484px;
+}
+
+.chat{
+	height:70px;
+	border-bottom:1px solid #e7ebee;		
+	position:relative;
+}
+.chat:hover{
+	background:#f1f4f6;
+	cursor:pointer;
+}
+/* 
+.send-msg{
+  position: absolute;
+  overflow: scroll;
+  width:730px;
+  bottom:0;
+} */
+
+/* .text-messages{
+  position: relative;  
+  top:80px;
+  font-size:30px;
+  font-weight:700;
+  padding:5px;
+  margin-bottom:15px;
 } */

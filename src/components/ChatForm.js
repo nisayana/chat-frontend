@@ -12,8 +12,8 @@ function ChatForm() {
     }
 
     return(
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="chatbox">
+            <form className="send-msg" onSubmit={handleSubmit}>
                 <label htmlFor="message_id">Message</label>
                 <input type="text" 
                     id="message_id" 

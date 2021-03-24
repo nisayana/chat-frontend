@@ -3,19 +3,15 @@ import ChatForm from './ChatForm'
 
 function Chatroom(props) {
 
-    // console.log(props.chatroom)
-    let {chatroom} = props
-    console.log(chatroom)
+    console.log(props)
+    let {message} = props
+
     return(
        <div>
-           <ul>
-               {chatroom}
-               {/* {chatroom.messages.map((message) => {
-                   return <li key={message.id}>{message.content}</li>
-               }) */}
-            }
+           <ul className="text-messages">
+               <li>{message.content}</li>
            </ul>
-           <ChatForm />
+           {/* <ChatForm /> */}
        </div>
     )
 }

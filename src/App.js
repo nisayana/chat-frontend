@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Link, Switch, Route, useHistory} from 'react-router-dom';
 import Home from './components/Home'
 import ChatroomsList from './components/ChatroomsList'
+import Chatroom from './components/Chatroom'
 import './App.css';
 import {connect} from 'react-redux';
 // import { useHistory } from 'react-router-dom'
@@ -44,6 +45,7 @@ function App() {
           
         {/* </Route> */}
         <Route path="/chats" component={ChatroomsList}/>
+        <Route path="/chat" component={Chatroom}/>
       </Switch>
     </div>
   );
