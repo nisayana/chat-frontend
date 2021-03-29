@@ -6,14 +6,20 @@ function Chatroom(props) {
     console.log(props)
     let {message} = props
 
+    console.log(message)
+
     return(
        <div>
            <ul className="text-messages">
-               <li>{message.content}</li>
+               {/* <li>{content}</li> */}
            </ul>
            {/* <ChatForm /> */}
        </div>
     )
+}
+let mapStateToProps = (state, ownProps) => {
+    let chatroom = state.singleChatroom
+    console.log(ownProps)
 }
 
 let setMessages = (messages) => {
@@ -22,7 +28,6 @@ let setMessages = (messages) => {
         messages: messages
     }
 }
-
 
 
 let mapDispatch = {

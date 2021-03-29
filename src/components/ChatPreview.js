@@ -2,21 +2,19 @@ import Chatroom from './Chatroom'
 import {Link, withRouter} from 'react-router-dom'
 
 function ChatPreview(props) {
-    // console.log(props.chatroom.messages.slice(-1)[0])
 
-    let {chatroom} = props
-    let message = chatroom.messages.map((message) => {
-        return <Chatroom key={message.id} message={message} />
+    console.log(props)
+
+    let arrOfMessages = props.chatroom.messages.map((singleArr) => {
+        return <Chatroom key={singleArr.id} message={singleArr} />
     })
-
-    console.log(chatroom)
-    
-    let lastMsg = chatroom.messages.slice(-1)[0]
+    console.log(arrOfMessages)
+    // // let lastMsg = chatroom.messages[messages.length-1]
 
     let handleClick = () => {
         // console.log("hello")
     }
-    // console.log(lastMsg)
+
     return(
         <div>
             <div id="chatbox">
@@ -24,12 +22,12 @@ function ChatPreview(props) {
                     <Link to={'/chat'}>
                         <li className="chat" onClick={handleClick} >
                             <strong>Sender name </strong>
-                            <span>{lastMsg.content}</span>
+                            {arrOfMessages}
+                            {/* <span>{arrOfMessages.content}</span> */}
                         </li>
                     </Link>
                 </ul>
             </div>
-            {message}
         </div>
     )
 }
